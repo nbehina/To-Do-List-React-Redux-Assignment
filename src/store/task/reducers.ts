@@ -1,5 +1,5 @@
-import { InventoryState, removeItem, addItem, InventoryTypes } from "./types";
-const initialState: InventoryState = {
+import { TaskState, removeItem, addItem, TaskTypes } from "./types";
+const initialState: TaskState = {
   items: [
     {
       task: "Cleaning",
@@ -10,7 +10,7 @@ const initialState: InventoryState = {
   ],
 };
 
-export function inventoryReducer(state = initialState, action: InventoryTypes) {
+export function taskReducer(state = initialState, action: TaskTypes) {
   switch (action.type) {
     case addItem:
       return {

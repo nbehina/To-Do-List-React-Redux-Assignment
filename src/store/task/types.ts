@@ -2,10 +2,10 @@ export interface Item {
   task: string;
 }
 
-export interface InventoryState {
+export interface TaskState {
   items: Item[];
 }
-// Or can be written  items: Array<{ id: number; name: string; color: string }>;
+// Or can be written  items: Array<{name: string}>;
 
 export const removeItem = "removeItem";
 export const addItem = "addItem";
@@ -20,4 +20,4 @@ interface AddItem {
   payload: Item;
 }
 
-export type InventoryTypes = RemoveItem | AddItem;
+export type TaskTypes = RemoveItem | AddItem;

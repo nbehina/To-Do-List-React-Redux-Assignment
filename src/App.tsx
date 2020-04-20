@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "semantic-ui-react";
-import Inventory from "./components/Inventory";
+import Inventory from "./components/Task";
 // import './App.css';
 
 function App() {

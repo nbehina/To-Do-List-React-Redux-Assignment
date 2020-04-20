@@ -1,25 +1,20 @@
 import React from "react";
 import { RootState } from "../store";
-import { removeItemFunction, addItemFunction } from "../store/inventory/action";
-import { Item } from "../store/inventory/types";
+import { removeItemFunction, addItemFunction } from "../store/task/action";
+import { Item } from "../store/task/types";
 import { Grid, Form, Input, Button } from "semantic-ui-react";
 import { connect } from "react-redux";
 
-export interface IInventoryProps {
+export interface ITaskProps {
   removeItemFunction: typeof removeItemFunction;
   addItemFunction: typeof addItemFunction;
   items: Item[];
 }
-export class Inventory extends React.Component<IInventoryProps> {
-  generateID = (): number => {
-    let randomNumber: number = Math.floor(Math.random() * 100);
-    randomNumber += this.props.items.length;
-    return randomNumber;
-  };
-  newProduct = (event: any) => {
+export class Task extends React.Component<ITaskProps> {
+  newTask = (event: any) => {
     event.preventDefault();
     const formField: HTMLInputElement | null = document.querySelector(
-      '[name="product-name"]'
+      '[name="task-name"]'
     );
     let formFieldValue: string = "";
     if (formField !== null) formFieldValue = formField.value;
@@ -34,10 +29,10 @@ export class Inventory extends React.Component<IInventoryProps> {
     return (
       <Grid centered>
         <Grid.Row>
-          <Form onSubmit={this.newProduct}>
+          <Form onSubmit={this.newTask}>
             <Form.Field>
-              <label htmlFor="product-name">Enter The Task List</label>
-              <Input name="product-name" type="text" />
+              <label htmlFor="task-name">Enter The Task List</label>
+              <Input name="task-name" type="text" />
             </Form.Field>
             <Input type="submit" value="Add" />
           </Form>
@@ -70,11 +65,11 @@ export class Inventory extends React.Component<IInventoryProps> {
 
 const mapStateToProps = (state: RootState) => {
   return {
-    items: state.inventory.items,
+    items: state.task.items,
   };
 };
 
 export default connect(mapStateToProps, {
   addItemFunction,
   removeItemFunction,
-})(Inventory);
+})(Task);
