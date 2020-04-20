@@ -22,7 +22,7 @@ export class Task extends React.Component<ITaskProps> {
       task: formFieldValue,
     });
   };
-  deleteProduct = (task: string) => {
+  deleteTask = (task: string) => {
     this.props.removeItemFunction(task);
   };
   render() {
@@ -49,7 +49,7 @@ export class Task extends React.Component<ITaskProps> {
                   size="tiny"
                   color="red"
                   onClick={(event) => {
-                    this.deleteProduct(element.task);
+                    this.deleteTask(element.task);
                   }}
                 >
                   Delete the Task
